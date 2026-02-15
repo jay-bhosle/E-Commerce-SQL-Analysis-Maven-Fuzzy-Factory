@@ -290,6 +290,7 @@ Run analysis queries
 <img width="1920" height="1080" alt="Screenshot (122)" src="https://github.com/user-attachments/assets/fd945570-18f6-4d88-983f-02dd6d54c564" />
 <img width="1920" height="1080" alt="Screenshot (123)" src="https://github.com/user-attachments/assets/dce73f28-11ee-4bbe-b5ec-352483b09592" />
 <img width="1920" height="1080" alt="Screenshot (124)" src="https://github.com/user-attachments/assets/e4282ebc-c895-4752-9602-a3da50848687" />
+<img width="1920" height="1080" alt="Screenshot (125)" src="https://github.com/user-attachments/assets/a8144f22-41a4-4543-bac4-38185ea2ba1b" />
 
 
 
