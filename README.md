@@ -1,4 +1,5 @@
 📊 Maven Fuzzy Factory – SQL Data Analysis Project
+
 📌 Project Overview: This project analyzes the Maven Fuzzy Factory e-commerce dataset using MySQL.
 The objective is to: Build a relational database, Load raw CSV data, Perform data validation & cleaning, Analyze sessions, orders, conversion rates, Evaluate channel performance & revenue metrics
 <img width="1920" height="1080" alt="Screenshot (103)" src="https://github.com/user-attachments/assets/f5f4fd2e-0fc2-48ac-9109-337b56c55534" />
