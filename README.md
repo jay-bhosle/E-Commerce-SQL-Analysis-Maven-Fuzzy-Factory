@@ -28,8 +28,7 @@ Clean pageviews (valid sessions only), Joined pageviews with cleaned sessions., 
 112
 
 📄 Core Performance Analysis
-📅 Monthly Sessions: 📈 Observed steady growth from 2012–2014.
-🛒 Monthly Orders: Orders increased proportionally with sessions.
+📅 Monthly Sessions: 📈 Observed steady growth from 2012–2014., 🛒 Monthly Orders: Orders increased proportionally with sessions.
 🔄 Sessions vs Orders, 📊 Conversion Rate
 📌 Overall Conversion Rate: 6.83%
 <img width="1920" height="1080" alt="Screenshot (113)" src="https://github.com/user-attachments/assets/1344574d-5799-4aef-b332-5e0e72fcf6bd" />
@@ -43,30 +42,8 @@ Clean pageviews (valid sessions only), Joined pageviews with cleaned sessions., 
 <img width="1920" height="1080" alt="Screenshot (117)" src="https://github.com/user-attachments/assets/5a0d2c64-755d-4207-b59f-fc16afe19e83" />
 117
 
-📄 Revenue & Channel Analysis
-💰 Average Order Value (AOV): 📌 Overall AOV ≈ $59.99
-📈 Monthly AOV: Tracked AOV growth over time.
-💵 Revenue per Session, 📌 Revenue per session ≈ $4.10
-📢 Channel Performance Analysis: Channel Classification Logic
-
-📊 Conversion by Channel
-Channel	Sessions	Orders	Conversion Rate
-Organic Search	39,438	2,614	6.63%
-Paid / Tagged Traffic	78,553	6,149	7.83%
-👉 Paid traffic converts better.
-
-💰 Revenue by Channel
-Channel	Revenue	Revenue per Order	Revenue per Session
-Organic Search	$156,674	$59.86	$3.97
-Paid / Tagged	$372,234	$60.53	$4.74
-📌 Paid traffic drives higher revenue efficiency.
-
-🧠 Key Insights
-📈 Strong session & order growth over time, 🔄 Overall conversion rate: 6.83%, 💰 Stable AOV around $60, 🚀 Paid traffic outperforms organic in:
-Conversion rate, Revenue per session, Total revenue
-
-🛠 Tech Stack
-MySQL: SQL (Joins, Aggregations, CASE statements), Data Cleaning Techniques, E-commerce Analytics
+📄 Revenue & Channel Analysis, 📊 Conversion by Channel, 💰 Revenue by Channel
+🧠 Key Insights: 📈 Strong session & order growth over time, 🔄 Overall conversion rate: 6.83%, 💰 Stable AOV around $60, 🚀 Paid traffic outperforms organic in: Conversion rate, Revenue per session, Total revenue
 <img width="1920" height="1080" alt="Screenshot (119)" src="https://github.com/user-attachments/assets/8edf9e5f-30e9-44c5-91f9-c48c78f5b29a" />
 119
 <img width="1920" height="1080" alt="Screenshot (121)" src="https://github.com/user-attachments/assets/16b68f38-95c5-4601-9e25-f6b18edcf403" />
