@@ -1,19 +1,8 @@
 📊 Maven Fuzzy Factory – SQL Data Analysis Project
-📄 Pages 1–5: Project Overview & Database Setup
-📌 Project Overview
-
-This project analyzes the Maven Fuzzy Factory e-commerce dataset using MySQL.
+📄 Project Overview & Database Setup
+📌 Project Overview: This project analyzes the Maven Fuzzy Factory e-commerce dataset using MySQL.
 The objective is to:
-
-Build a relational database
-
-Load raw CSV data
-
-Perform data validation & cleaning
-
-Analyze sessions, orders, conversion rates
-
-Evaluate channel performance & revenue metrics
+Build a relational database, Load raw CSV data, Perform data validation & cleaning, Analyze sessions, orders, conversion rates, Evaluate channel performance & revenue metrics
 
 🗂 Database Creation
 CREATE DATABASE maven_fuzzy_factory;
@@ -21,70 +10,24 @@ USE maven_fuzzy_factory;
 
 🏗 Raw Tables Created
 1️⃣ website_sessions
+Stores visitor session data., website_session_id, created_at, user_id, utm_source, utm_campaign, utm_content, device_type, http_referer
 
-Stores visitor session data.
-
-website_session_id
-
-created_at
-
-user_id
-
-utm_source
-
-utm_campaign
-
-utm_content
-
-device_type
-
-http_referer
-
-2️⃣ website_pageviews
-
-Tracks page-level activity.
-
-website_pageview_id
-
-created_at
-
-website_session_id
-
-pageview_url
+2️⃣ website_pageviews 
+Tracks page-level activity., website_pageview_id, created_at, website_session_id, pageview_url
 
 3️⃣ orders
-
-Stores completed purchase data.
-
-order_id
-
-created_at
-
-website_session_id
-
-user_id
-
-primary_product_id
-
-price_usd
+Stores completed purchase data., order_id, created_at, website_session_id, user_id, primary_product_id, price_usd
 
 4️⃣ order_items
-
 Contains item-level purchase data.
 
 5️⃣ order_item_refunds
-
 Tracks refunded items.
 
 📥 Data Loading
-
-Enabled local file loading:
-
-SET GLOBAL local_infile = 1;
-
+Enabled local file loading: SET GLOBAL local_infile = 1;
 
 Loaded CSV files using:
-
 LOAD DATA LOCAL INFILE 'file_path'
 INTO TABLE table_name
 FIELDS TERMINATED BY ','
@@ -102,11 +45,9 @@ IGNORE 1 ROWS;
 <img width="1920" height="1080" alt="Screenshot (107)" src="https://github.com/user-attachments/assets/8f0aa042-d60d-4db2-a5b5-6a37639280f8" />
 107
 
-📄 Pages 6–10: Data Validation & Cleaning
+📄 Data Validation & Cleaning
 🔎 Row Count Validation
-
 Verified row counts across all tables:
-
 SELECT COUNT(*) FROM website_sessions;
 SELECT COUNT(*) FROM website_pageviews;
 SELECT COUNT(*) FROM orders;
@@ -114,9 +55,7 @@ SELECT COUNT(*) FROM order_items;
 SELECT COUNT(*) FROM order_item_refunds;
 
 🚫 Null Checks
-
 Validated key fields:
-
 SELECT
 COUNT(*) AS total_rows,
 SUM(website_session_id IS NULL) AS null_session_id,
@@ -124,14 +63,8 @@ SUM(created_at IS NULL) AS null_created_at,
 SUM(user_id IS NULL) AS null_user_id
 FROM website_sessions;
 
-
 Confirmed:
-
-No null primary identifiers
-
-Clean timestamps
-
-Valid user data
+No null primary identifiers, Clean timestamps, Valid user data
 
 🧹 Data Cleaning
 Clean website sessions
@@ -148,13 +81,7 @@ FROM orders
 WHERE order_id IS NOT NULL
 AND price_usd > 0;
 
-Clean pageviews (valid sessions only)
-
-Joined pageviews with cleaned sessions.
-
-Clean order items
-
-Joined order_items with valid orders.
+Clean pageviews (valid sessions only), Joined pageviews with cleaned sessions., Clean order items, Joined order_items with valid orders.
 <img width="1920" height="1080" alt="Screenshot (108)" src="https://github.com/user-attachments/assets/6fa16d23-2450-42d3-a06d-d3ee479ccc03" />
 108
 <img width="1920" height="1080" alt="Screenshot (109)" src="https://github.com/user-attachments/assets/42c2c691-a3c7-4c5d-bb9e-26e847332f8a" />
@@ -166,7 +93,7 @@ Joined order_items with valid orders.
 <img width="1920" height="1080" alt="Screenshot (112)" src="https://github.com/user-attachments/assets/3c27b32e-b8a6-4350-997a-a90c74b258e3" />
 112
 
-📄 Pages 11–15: Core Performance Analysis
+📄 Core Performance Analysis
 📅 Monthly Sessions
 SELECT
 YEAR(created_at) AS yr,
@@ -175,7 +102,6 @@ COUNT(*) AS sessions
 FROM website_sessions_clean
 GROUP BY 1,2
 ORDER BY 1,2;
-
 
 📈 Observed steady growth from 2012–2014.
 
@@ -187,7 +113,6 @@ COUNT(*) AS orders
 FROM orders_clean
 GROUP BY 1,2
 ORDER BY 1,2;
-
 
 Orders increased proportionally with sessions.
 
@@ -208,7 +133,6 @@ COUNT(DISTINCT o.order_id) * 1.0 /
 COUNT(DISTINCT ws.website_session_id)
 
 📌 Overall Conversion Rate
-
 6.83%
 <img width="1920" height="1080" alt="Screenshot (113)" src="https://github.com/user-attachments/assets/1344574d-5799-4aef-b332-5e0e72fcf6bd" />
 113
@@ -221,22 +145,19 @@ COUNT(DISTINCT ws.website_session_id)
 <img width="1920" height="1080" alt="Screenshot (117)" src="https://github.com/user-attachments/assets/5a0d2c64-755d-4207-b59f-fc16afe19e83" />
 117
 
-📄 Pages 16–20: Revenue & Channel Analysis
+📄 Revenue & Channel Analysis
 💰 Average Order Value (AOV)
 SELECT
 SUM(price_usd) / COUNT(DISTINCT order_id) AS avg_order_value
 FROM orders_clean;
 
-
 📌 Overall AOV ≈ $59.99
 
 📈 Monthly AOV
-
 Tracked AOV growth over time.
 
 💵 Revenue per Session
 SUM(price_usd) / COUNT(DISTINCT website_session_id)
-
 
 📌 Revenue per session ≈ $4.10
 
@@ -264,42 +185,14 @@ Paid / Tagged	$372,234	$60.53	$4.74
 📌 Paid traffic drives higher revenue efficiency.
 
 🧠 Key Insights
-
-📈 Strong session & order growth over time
-
-🔄 Overall conversion rate: 6.83%
-
-💰 Stable AOV around $60
-
-🚀 Paid traffic outperforms organic in:
-
-Conversion rate
-
-Revenue per session
-
-Total revenue
+📈 Strong session & order growth over time, 🔄 Overall conversion rate: 6.83%, 💰 Stable AOV around $60, 🚀 Paid traffic outperforms organic in:
+Conversion rate, Revenue per session, Total revenue
 
 🛠 Tech Stack
-
-MySQL
-
-SQL (Joins, Aggregations, CASE statements)
-
-Data Cleaning Techniques
-
-E-commerce Analytics
+MySQL: SQL (Joins, Aggregations, CASE statements), Data Cleaning Techniques, E-commerce Analytics
 
 📂 How to Run
-
-Clone repository
-
-Create database
-
-Load CSV files
-
-Execute cleaning scripts
-
-Run analysis queries
+Clone repository, Create database, Load CSV files, Execute cleaning scripts, Run analysis queries
 <img width="1920" height="1080" alt="Screenshot (119)" src="https://github.com/user-attachments/assets/8edf9e5f-30e9-44c5-91f9-c48c78f5b29a" />
 119
 <img width="1920" height="1080" alt="Screenshot (121)" src="https://github.com/user-attachments/assets/16b68f38-95c5-4601-9e25-f6b18edcf403" />
