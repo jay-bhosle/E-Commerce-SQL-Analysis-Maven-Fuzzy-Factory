@@ -3,37 +3,6 @@
 📌 Project Overview: This project analyzes the Maven Fuzzy Factory e-commerce dataset using MySQL.
 The objective is to:
 Build a relational database, Load raw CSV data, Perform data validation & cleaning, Analyze sessions, orders, conversion rates, Evaluate channel performance & revenue metrics
-
-🗂 Database Creation
-CREATE DATABASE maven_fuzzy_factory;
-USE maven_fuzzy_factory;
-
-🏗 Raw Tables Created
-1️⃣ website_sessions
-Stores visitor session data., website_session_id, created_at, user_id, utm_source, utm_campaign, utm_content, device_type, http_referer
-
-2️⃣ website_pageviews 
-Tracks page-level activity., website_pageview_id, created_at, website_session_id, pageview_url
-
-3️⃣ orders
-Stores completed purchase data., order_id, created_at, website_session_id, user_id, primary_product_id, price_usd
-
-4️⃣ order_items
-Contains item-level purchase data.
-
-5️⃣ order_item_refunds
-Tracks refunded items.
-
-📥 Data Loading
-Enabled local file loading: SET GLOBAL local_infile = 1;
-
-Loaded CSV files using:
-LOAD DATA LOCAL INFILE 'file_path'
-INTO TABLE table_name
-FIELDS TERMINATED BY ','
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS;
 <img width="1920" height="1080" alt="Screenshot (103)" src="https://github.com/user-attachments/assets/f5f4fd2e-0fc2-48ac-9109-337b56c55534" />
 103
 <img width="1920" height="1080" alt="Screenshot (104)" src="https://github.com/user-attachments/assets/04d66b15-582f-4b3c-a6bc-57adbc25d229" />
