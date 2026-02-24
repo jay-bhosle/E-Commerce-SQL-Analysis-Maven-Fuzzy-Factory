@@ -14,41 +14,7 @@ The objective is to: Build a relational database, Load raw CSV data, Perform dat
 107
 
 📄 Data Validation & Cleaning
-🔎 Row Count Validation
-Verified row counts across all tables:
-SELECT COUNT(*) FROM website_sessions;
-SELECT COUNT(*) FROM website_pageviews;
-SELECT COUNT(*) FROM orders;
-SELECT COUNT(*) FROM order_items;
-SELECT COUNT(*) FROM order_item_refunds;
-
-🚫 Null Checks
-Validated key fields:
-SELECT
-COUNT(*) AS total_rows,
-SUM(website_session_id IS NULL) AS null_session_id,
-SUM(created_at IS NULL) AS null_created_at,
-SUM(user_id IS NULL) AS null_user_id
-FROM website_sessions;
-
-Confirmed:
-No null primary identifiers, Clean timestamps, Valid user data
-
-🧹 Data Cleaning
-Clean website sessions
-CREATE TABLE website_sessions_clean AS
-SELECT *
-FROM website_sessions
-WHERE website_session_id IS NOT NULL
-AND created_at IS NOT NULL;
-
-Clean orders
-CREATE TABLE orders_clean AS
-SELECT DISTINCT *
-FROM orders
-WHERE order_id IS NOT NULL
-AND price_usd > 0;
-
+🔎 Row Count Validation, 🚫 Null Checks, 🧹 Data Cleaning
 Clean pageviews (valid sessions only), Joined pageviews with cleaned sessions., Clean order items, Joined order_items with valid orders.
 <img width="1920" height="1080" alt="Screenshot (108)" src="https://github.com/user-attachments/assets/6fa16d23-2450-42d3-a06d-d3ee479ccc03" />
 108
@@ -62,46 +28,10 @@ Clean pageviews (valid sessions only), Joined pageviews with cleaned sessions., 
 112
 
 📄 Core Performance Analysis
-📅 Monthly Sessions
-SELECT
-YEAR(created_at) AS yr,
-MONTH(created_at) AS mo,
-COUNT(*) AS sessions
-FROM website_sessions_clean
-GROUP BY 1,2
-ORDER BY 1,2;
-
-📈 Observed steady growth from 2012–2014.
-
-🛒 Monthly Orders
-SELECT
-YEAR(created_at) AS yr,
-MONTH(created_at) AS mo,
-COUNT(*) AS orders
-FROM orders_clean
-GROUP BY 1,2
-ORDER BY 1,2;
-
-Orders increased proportionally with sessions.
-
-🔄 Sessions vs Orders
-SELECT
-YEAR(ws.created_at) AS yr,
-MONTH(ws.created_at) AS mo,
-COUNT(DISTINCT ws.website_session_id) AS sessions,
-COUNT(DISTINCT o.order_id) AS orders
-FROM website_sessions_clean ws
-LEFT JOIN orders_clean o
-ON ws.website_session_id = o.website_session_id
-GROUP BY 1,2;
-
-📊 Conversion Rate
-Monthly Conversion Rate
-COUNT(DISTINCT o.order_id) * 1.0 /
-COUNT(DISTINCT ws.website_session_id)
-
-📌 Overall Conversion Rate
-6.83%
+📅 Monthly Sessions: 📈 Observed steady growth from 2012–2014.
+🛒 Monthly Orders: Orders increased proportionally with sessions.
+🔄 Sessions vs Orders, 📊 Conversion Rate
+📌 Overall Conversion Rate: 6.83%
 <img width="1920" height="1080" alt="Screenshot (113)" src="https://github.com/user-attachments/assets/1344574d-5799-4aef-b332-5e0e72fcf6bd" />
 113
 <img width="1920" height="1080" alt="Screenshot (114)" src="https://github.com/user-attachments/assets/3cabb950-2473-4eb6-8905-e18c24b64334" />
@@ -114,42 +44,21 @@ COUNT(DISTINCT ws.website_session_id)
 117
 
 📄 Revenue & Channel Analysis
-💰 Average Order Value (AOV)
-SELECT
-SUM(price_usd) / COUNT(DISTINCT order_id) AS avg_order_value
-FROM orders_clean;
-
-📌 Overall AOV ≈ $59.99
-
-📈 Monthly AOV
-Tracked AOV growth over time.
-
-💵 Revenue per Session
-SUM(price_usd) / COUNT(DISTINCT website_session_id)
-
-📌 Revenue per session ≈ $4.10
-
-📢 Channel Performance Analysis
-Channel Classification Logic
-CASE
-WHEN utm_source = 1 THEN 'Paid / Tagged Traffic'
-WHEN utm_source = 0 AND http_referer IS NOT NULL THEN 'Organic Search'
-WHEN utm_source = 0 AND http_referer IS NULL THEN 'Direct'
-ELSE 'Other'
-END
+💰 Average Order Value (AOV): 📌 Overall AOV ≈ $59.99
+📈 Monthly AOV: Tracked AOV growth over time.
+💵 Revenue per Session, 📌 Revenue per session ≈ $4.10
+📢 Channel Performance Analysis: Channel Classification Logic
 
 📊 Conversion by Channel
 Channel	Sessions	Orders	Conversion Rate
 Organic Search	39,438	2,614	6.63%
 Paid / Tagged Traffic	78,553	6,149	7.83%
-
 👉 Paid traffic converts better.
 
 💰 Revenue by Channel
 Channel	Revenue	Revenue per Order	Revenue per Session
 Organic Search	$156,674	$59.86	$3.97
 Paid / Tagged	$372,234	$60.53	$4.74
-
 📌 Paid traffic drives higher revenue efficiency.
 
 🧠 Key Insights
@@ -158,9 +67,6 @@ Conversion rate, Revenue per session, Total revenue
 
 🛠 Tech Stack
 MySQL: SQL (Joins, Aggregations, CASE statements), Data Cleaning Techniques, E-commerce Analytics
-
-📂 How to Run
-Clone repository, Create database, Load CSV files, Execute cleaning scripts, Run analysis queries
 <img width="1920" height="1080" alt="Screenshot (119)" src="https://github.com/user-attachments/assets/8edf9e5f-30e9-44c5-91f9-c48c78f5b29a" />
 119
 <img width="1920" height="1080" alt="Screenshot (121)" src="https://github.com/user-attachments/assets/16b68f38-95c5-4601-9e25-f6b18edcf403" />
