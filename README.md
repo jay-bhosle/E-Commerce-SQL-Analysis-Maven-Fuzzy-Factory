@@ -1,60 +1,56 @@
-📊 Maven Fuzzy Factory – SQL Data Analysis Project
+# Maven Fuzzy Factory – E‑Commerce Marketing Analytics  
+**SQL‑driven analysis of traffic sources, conversion rates, and revenue growth**
 
-📌 Project Overview: 
-This project analyzes the Maven Fuzzy Factory e-commerce dataset using MySQL.
-The objective is to: Build a relational database, Load raw CSV data, Perform data validation & cleaning, Analyze sessions, orders, conversion rates, Evaluate channel performance & revenue metrics
-<img width="1920" height="1080" alt="Screenshot (103)" src="https://github.com/user-attachments/assets/f5f4fd2e-0fc2-48ac-9109-337b56c55534" />
-1
-<img width="1920" height="1080" alt="Screenshot (106)" src="https://github.com/user-attachments/assets/77a70f28-66c5-4b60-b479-70d46599a152" />
-2
+## Project Overview
+Analysed 1+ year of website data for Maven Fuzzy Factory, an online teddy bear retailer. I cleaned raw data, built a reliable database, and ran layered SQL queries to uncover how marketing channels perform, how conversion rates evolve, and where to double down for scalable revenue.
 
-📄 Data Validation & Cleaning
-🔎 Row Count Validation, 🚫 Null Checks, 🧹 Data Cleaning
-Clean pageviews (valid sessions only), Joined pageviews with cleaned sessions., Clean order items, Joined order_items with valid orders.
-<img width="1920" height="1080" alt="Screenshot (109)" src="https://github.com/user-attachments/assets/42c2c691-a3c7-4c5d-bb9e-26e847332f8a" />
-3
-<img width="1920" height="1080" alt="Screenshot (110)" src="https://github.com/user-attachments/assets/95248840-5927-43bd-a739-0df13d492683" />
-4
-<img width="1920" height="1080" alt="Screenshot (111)" src="https://github.com/user-attachments/assets/98cc6dd0-e6e2-42a3-91ad-2ecee76c2698" />
-5
-<img width="1920" height="1080" alt="Screenshot (112)" src="https://github.com/user-attachments/assets/3c27b32e-b8a6-4350-997a-a90c74b258e3" />
-6
+## Tools & Technologies
+- **SQL (MySQL Workbench)** – Data loading, cleaning, quality checks, and all business‑critical analysis  
+- **Excel** – Quick charting and final summary (optional)
 
-📄 Core Performance Analysis
-📅 Monthly Sessions: 📈 Observed steady growth from 2012–2014., 🛒 Monthly Orders: Orders increased proportionally with sessions.
-🔄 Sessions vs Orders, 📊 Conversion Rate
-📌 Overall Conversion Rate: 6.83%
-<img width="1920" height="1080" alt="Screenshot (113)" src="https://github.com/user-attachments/assets/1344574d-5799-4aef-b332-5e0e72fcf6bd" />
-7
-<img width="1920" height="1080" alt="Screenshot (116)" src="https://github.com/user-attachments/assets/984a77d0-b9e7-441b-a0ab-f11b4fe74ebb" />
-8
+## Data Pipeline
 
-📄 Revenue & Channel Analysis, 📊 Conversion by Channel, 💰 Revenue by Channel
-🧠 Key Insights: 📈 Strong session & order growth over time, 🔄 Overall conversion rate: 6.83%, 💰 Stable AOV around $60, 🚀 Paid traffic outperforms organic in: Conversion rate, Revenue per session, Total revenue
-<img width="1920" height="1080" alt="Screenshot (124)" src="https://github.com/user-attachments/assets/e4282ebc-c895-4752-9602-a3da50848687" />
-9
-<img width="1920" height="1080" alt="Screenshot (125)" src="https://github.com/user-attachments/assets/a8144f22-41a4-4543-bac4-38185ea2ba1b" />
-10
+### 1. Database & Raw Data
+Created schema and loaded four CSV files (sessions, pageviews, orders, order items) using `LOAD DATA INFILE`.  
+<img width="1920" height="1080" alt="Screenshot (103)" src="https://github.com/user-attachments/assets/54997c38-ca31-4ca0-ae8b-9fa987366865" />  
+<img width="1920" height="1080" alt="Screenshot (104)" src="https://github.com/user-attachments/assets/7849fdcd-5e72-44d2-a244-57b86e5146d0" />
 
+### 2. Data Quality Checks
+Ran NULL checks and duplicate detection on key fields (session ID, user ID, order ID, price). No critical issues found.  
+<img width="1920" height="1080" alt="Screenshot (106)" src="https://github.com/user-attachments/assets/7a9f607b-3839-404c-8f9f-e3be5c829560" />
 
+### 3. Data Cleaning
+Created clean tables: removed rows with NULL keys, invalid prices, and orphaned pageviews or order items.  
+<img width="1920" height="1080" alt="Screenshot (107)" src="https://github.com/user-attachments/assets/6a1295eb-3453-4165-90e9-d607a336e5c8" />
 
+## Key Insights (All SQL‑Generated)
 
+### 📈 Sessions & Orders Growth
+Sessions grew from 1,879 (Mar 2012) to 14,032 (Nov 2013) – a 7.5× increase. Orders scaled proportionally, showing strong demand.  
+<img width="1920" height="1080" alt="Screenshot (109)" src="https://github.com/user-attachments/assets/091541e8-7c91-41ae-b31f-72d9845cfcbb" />  
+<img width="1920" height="1080" alt="Screenshot (110)" src="https://github.com/user-attachments/assets/1079a360-e531-450c-96fa-d89c9c464ed4" />
 
+### 🔁 Conversion Rate Trend
+Session‑to‑order conversion rate improved from **3.2% to 7.1%** – more than doubling over the period. Consistent optimization is paying off.  
+<img width="1920" height="1080" alt="Screenshot (112)" src="https://github.com/user-attachments/assets/e8fed89a-8680-41d7-ad7e-1369fb01bf86" />
 
+### 📣 Most Successful Channels
+- **Organic Search** drove 394k sessions (83% of total) with a 6.6% conversion rate.  
+- **Paid / Tagged Traffic** delivered 78k sessions with a higher conversion rate of **7.8%**.  
+Both channels are efficient; Organic is the scalable backbone.  
+<img width="1920" height="1080" alt="Screenshot (116)" src="https://github.com/user-attachments/assets/ab51e179-1d28-4821-8844-409f6ba0e5e5" />
 
+### 💰 Revenue per Session
+Revenue per session rose from **$1.60 to $3.70** – a 2.3× uplift. This reflects both higher conversion and increased order value.  
+<img width="1920" height="1080" alt="Screenshot (123)" src="https://github.com/user-attachments/assets/cf66d968-004e-4a6f-a79c-37d9dbfedb86" />
 
+### 📊 Final Channel Economics
+Summarised each channel’s sessions, orders, total revenue, revenue per order, and revenue per session to prioritize investment.  
+<img width="1920" height="1080" alt="Screenshot (125)" src="https://github.com/user-attachments/assets/9f789ae9-76ed-4356-814c-1efb5e9a6801" />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Recommendations (Directly from Analysis)
+- **Keep investing in SEO** – it fuels 83% of sessions and delivers strong, growing revenue.  
+- **Scale paid campaigns cautiously** – 7.8% conversion rate proves efficiency; test budget increases.  
+- **Continue UX/checkout optimization** – conversion rate has doubled already; further gains compound quickly.  
+- **Focus on revenue per session** – add cross‑sells, bundles, and personalised offers to push beyond $3.70.  
+- **Pricing & product strategy** – sustained revenue per order growth indicates customers are willing to buy higher‑value items.
